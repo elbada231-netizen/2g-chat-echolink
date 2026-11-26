@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ECHO-LINK | Private Global STEAM Meetings</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Free Peer-to-Peer WebRTC Library for Private Rooms -->
+  <script src="https://unpkg.com"></script>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1>ECHO-LINK <span class="accent">MEET</span></h1>
+      <small>Ultra-Low-Bandwidth Private Rooms, Speech Synthesis &amp; AR Workbench</small>
+    </div>
+    <span class="badge">NAS DUBAI &rarr; MIT 2027</span>
+  </div>
+
+  <!-- Private Meeting Room Bar (Like Google Meet) -->
+  <div class="room-bar">
+    <div>
+      <strong>Your Room Code:</strong> 
+      <span id="myRoomId" class="room-code">Generating...</span>
+      <button id="copyBtn" class="btn-secondary">Copy Invite Code</button>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <input type="text" id="joinInput" placeholder="Paste friend's Room Code...">
+      <button id="joinBtn">Join Private Room</button>
+      <span id="connStatus" class="status-pill">● Waiting for Guest</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Left Column: Live FFT & Shared AR Laser -->
+    <div class="card">
+      <div class="card-top">
+        <h3>1. Live Acoustic Frequency Spectrum (FFT)</h3>
+        <button id="startBtn">Activate Sensor Link</button>
+      </div>
+      <canvas id="visualizer"></canvas>
+      
+      <div class="card-top" style="margin-top: 20px;">
+        <h3>2. Shared AR Laser Canvas (Draws on Both Screens!)</h3>
+        <button id="clearBtn" class="btn-secondary">Clear Laser</button>
+      </div>
+      <canvas id="arCanvas"></canvas>
+    </div>
+
+    <!-- Right Column: Bandwidth Stats & Live Private Chat -->
+    <div class="card">
+      <h3 style="margin-top: 0;">Live Bandwidth &amp; Voice Link</h3>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="stat-box">
+          <div class="stat-label">GOOGLE MEET VOICE</div>
+          <div class="stat-val crimson" style="font-size: 18px;">16,000 B/s</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">ECHO-LINK VOICE</div>
+          <div class="stat-val" id="echoRate" style="font-size: 18px;">0 B/s</div>
+        </div>
+      </div>
+
+      <div class="stat-box green-border">
+        <div class="stat-label">EDGE-AI ACOUSTIC STATUS</div>
+        <div id="aiStatus" class="ai-status">IDLE</div>
+      </div>
+
+      <div class="stat-label" style="margin-bottom: 5px;">PRIVATE ROOM CHAT &amp; LIVE VOICE-TO-SPEECH:</div>
+      <div id="chatBox" class="packet-log">
+        <div style="color:#94a3b8;">Share your Room Code with a friend to start a private meeting...</div>
+      </div>
+
+      <div style="display: flex; gap: 6px; margin-top: 8px;">
+        <input type="text" id="chatInput" placeholder="Type message..." style="flex:1;">
+        <button id="sendBtn" style="padding: 8px 14px;">Send</button>
+        <button id="voiceBtn" class="btn-voice" title="Speak so partner hears you">🎤 Speak</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
